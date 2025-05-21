@@ -4,8 +4,12 @@
   "types": "dist/src/index.d.ts",
   "version": "1.0.0",
   "license": "MIT",
+  "files": [
+    "dist",
+    "typechain-types"
+  ],
   "scripts": {
-    "build": "hardhat compile && tsc",
+    "build": "tsc",
     "prepare": "npm run build",
     "graph:build": "graph build",
     "graph:deploy-dev": "graph deploy kettle-bera-dev --node https://subgraphs.alchemy.com/api/subgraphs/deploy --deploy-key fQFj7KyJqzWJi --ipfs https://ipfs.satsuma.xyz dev.subgraph.yaml",
