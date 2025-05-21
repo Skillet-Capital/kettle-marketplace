@@ -80,6 +80,12 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
     //                      External Functions
     // =============================================================
 
+    /// @notice Fulfills a bid offer by transferring the token from the caller to the offer maker and currency to the caller
+    /// @param tokenId The token ID to transfer
+    /// @param offer The bid offer details
+    /// @param signature Signature of the offer
+    /// @param proof Optional Merkle proof for criteria-based collateral
+    /// @return _hash The hash of the validated offer
     function takeBid(
         uint256 tokenId,
         MarketOffer calldata offer,
@@ -91,7 +97,7 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
         // verify token id matches collateral identifier
         _verifyCollateral(offer.collateral.criteria, offer.collateral.identifier, tokenId, proof);
 
-        // hash and verify offer signature
+        // hash and verify offer signature, mark offer as cancelled
         _hash = _hashMarketOffer(offer); 
         _validateOffer(_hash, offer.maker, offer.expiration, offer.salt, signature);
         cancelledOrFulfilled[offer.maker][offer.salt] = 1;
@@ -106,6 +112,12 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
         emit MarketOfferTaken(_hash, tokenId, msg.sender, offer);
     }
 
+    /// @notice Fulfills an ask offer by transferring the token from the maker to the specified taker, and currency to the maker
+    /// @dev msg.sender is always the sender of funds (can fund on behalf of the taker)
+    /// @param taker The recipient of the token
+    /// @param offer The ask offer details
+    /// @param signature Signature of the offer
+    /// @return _hash The hash of the validated offer
     function takeAsk(
         address taker,
         MarketOffer calldata offer,
@@ -130,6 +142,11 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
         emit MarketOfferTaken(_hash, offer.collateral.identifier, taker, offer);
     }
 
+    /// @notice Redeems a token for off-chain services by sending token and payment to the redemption wallet
+    /// @dev msg.sender is always the sender of funds (can fund on behalf of the redeemer)
+    /// @param charge Redemption charge details including redeemer, token, amount, and expiration
+    /// @param signature Signed proof that the redeemer is authorized to redeem
+    /// @return _hash The hash of the validated redemption charge
     function redeem(
         RedemptionCharge calldata charge,
         bytes calldata signature
@@ -149,6 +166,8 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
         emit Redemption(_hash, charge);
     }
 
+    /// @notice Cancels a batch of offers by salt for the sender
+    /// @param salts An array of offer salts to cancel
     function cancelOffers(
         uint256[] calldata salts
     ) external {
@@ -157,10 +176,14 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
         }
     }
 
+    /// @notice Increments the nonce for the sender to invalidate all past offers
     function incrementNonce() external {
         _incrementNonce(msg.sender);
     }
 
+    /// @notice Cancels offers on behalf of a user, callable only by the offerManager
+    /// @param maker The user whose offers are to be canceled
+    /// @param salts The salts of the offers to cancel
     function cancelOffersForUser(
         address maker,
         uint256[] calldata salts
@@ -170,6 +193,8 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
         }
     }
 
+    /// @notice Increments the nonce for a user on their behalf, invalidating all previous offers
+    /// @param maker The address of the user
     function incrementNonceForUser(
         address maker
     ) external onlyOfferManager {
@@ -180,6 +205,8 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
     //                      Internal Functions
     // =============================================================
 
+    /// @notice Transfers fee amount from payer to recipient and returns remaining net amount
+    /// @dev Fee is calculated and deducted before main transfer
     function _transferFees(
         IERC20 currency,
         address payer,
@@ -199,6 +226,8 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
         netAmount = amount - feeAmount;
     }
 
+    /// @notice Calculates fee based on basis points
+    /// @dev Reverts if the fee is equal to or exceeds the total amount
     function _calculateFee(
         uint256 amount,
         uint256 rate
@@ -209,6 +238,8 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
         }
     }
 
+    /// @notice Validates offer hash, expiration, and that it hasn't been canceled
+    /// @dev Also calls signature verification
     function _validateOffer(
         bytes32 _hash,
         address _signer,
@@ -221,6 +252,8 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
         _verifyOfferAuthorization(_hash, _signer, signature);
     }
 
+    /// @notice Verifies that a token meets the specified collateral criteria
+    /// @param criteria Either PROOF (Merkle-based) or EXACT (single token match)
     function _verifyCollateral(
         Criteria criteria,
         uint256 identifier,
@@ -244,11 +277,13 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
         }
     }
 
+    /// @notice Marks an offer as canceled/fulfilled
     function _cancelOffer(address maker, uint256 salt) internal {
         cancelledOrFulfilled[maker][salt] = 1;
         emit OfferCancelled(msg.sender, maker, salt);
     }
 
+    /// @notice Increments a user's nonce to invalidate all previous offers
     function _incrementNonce(address maker) internal {
         nonces[maker]++;
         emit NonceIncremented(msg.sender, maker, nonces[maker]);
@@ -258,6 +293,8 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
     //                      Helper Functions
     // =============================================================
 
+    /// @notice Handles safe ERC20 transfer logic
+    /// @dev No-op if amount is 0
     function _transferCurrency(
         IERC20 currency,
         address from,
@@ -272,6 +309,7 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
     //                      Modifiers
     // =============================================================
 
+    /// @notice Ensures the caller is the designated offer manager
     modifier onlyOfferManager() {
         if (msg.sender != offerManager) revert OnlyOfferManager();
         _;
