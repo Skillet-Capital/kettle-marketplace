@@ -12,6 +12,11 @@ const DevMintTokensModule = buildModule("DevMintTokens", (m) => {
     ], { id: `dev_mint_${i}` });
   }
 
+  m.call(proxy, "approveOperator", [
+    "0xf9eFE180bF2b5B41C867D6f5263252eBBf08dd55",
+    true
+  ], { id: `dev_approve_operator` });
+
   return { proxy }
 });
 
