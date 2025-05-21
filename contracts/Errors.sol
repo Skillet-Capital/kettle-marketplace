@@ -14,7 +14,6 @@ error InvalidSalt();
 error OnlyOfferManager();
 error InvalidCriteria();
 error InvalidToken();
-
 error ERC6492DeployFailed(bytes err);
 error InvalidVParameter();
 error InvalidFee();

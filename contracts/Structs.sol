@@ -35,11 +35,11 @@ struct MarketOffer {
 }
 
 struct RedemptionCharge {
-  address redeemer;
-  IERC721 collection;
-  uint256 tokenId;
-  IERC20 currency;
-  uint256 amount;
-  uint256 expiration;
-  uint256 salt;
+    address redeemer;
+    IERC721 collection;
+    uint256 tokenId;
+    IERC20 currency;
+    uint256 amount;
+    uint256 expiration;
+    uint256 salt;
 }
