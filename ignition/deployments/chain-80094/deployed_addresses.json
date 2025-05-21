@@ -1,0 +1,17 @@
+{
+  "KettleMarketplace#KettleImplementation": "0x59FF42A4160e046e2873f9371fD56dd0326C0786",
+  "KettleMarketplace#DEV_kettle_proxy": "0xf9eFE180bF2b5B41C867D6f5263252eBBf08dd55",
+  "KettleMarketplace#PROD_kettle_proxy": "0x3d0b6A41f446528FF9f5069D96e40FB29efC7e23",
+  "KettleMarketplace#DEV_kettle": "0xf9eFE180bF2b5B41C867D6f5263252eBBf08dd55",
+  "KettleMarketplace#PROD_kettle": "0x3d0b6A41f446528FF9f5069D96e40FB29efC7e23",
+  "KettleMarketplace#DEV_proxy_admin": "0xE4631De9827369737846731905161e27D60Dd444",
+  "KettleMarketplace#PROD_proxy_admin": "0x65ED72bB46fB68590Eb4442F0B10D279c5Bc8671",
+  "KettleAsset#KettleAssetImplementation": "0x1Bf2E1CC5Cb7395046aD094a3577F951c9FC6280",
+  "KettleAsset#DEV_kettle_asset_proxy": "0x0aEA50e7c8D41023d628b10960BC71d089668Fc6",
+  "KettleAsset#PROD_kettle_asset_proxy": "0x1818151E734E3954823f5d0bFD934f552259E7c8",
+  "KettleAsset#DEV_kettle_asset": "0x0aEA50e7c8D41023d628b10960BC71d089668Fc6",
+  "KettleAsset#PROD_kettle_asset": "0x1818151E734E3954823f5d0bFD934f552259E7c8",
+  "KettleAsset#DEV_kettle_asset_proxy_admin": "0x4FA9C3f578732A01CF1399Ac01269604318aABb0",
+  "KettleAsset#PROD_kettle_asset_proxy_admin": "0x9E27Fadb0b3AcFa1694CdBE17473690F0a6C3498",
+  "DevMintTokens#KettleAsset": "0x0aEA50e7c8D41023d628b10960BC71d089668Fc6"
+}

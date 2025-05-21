@@ -17,7 +17,6 @@ contract KettleAsset is IKettleAsset, Initializable, ERC721Upgradeable, OwnableU
     mapping(uint256 => bool) public lockedTokens;
     mapping(address => mapping(address => mapping(uint256 => bool))) public approvedTransfers;
 
-
     uint256[50] private _gap;
 
     function initialize(address owner) public initializer {
