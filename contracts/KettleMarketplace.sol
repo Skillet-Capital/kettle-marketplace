@@ -63,14 +63,17 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
     
     function _setRedemptionSigner(address _redemptionSigner) internal {
         redemptionSigner = _redemptionSigner;
+        emit RedemptionSignerUpdated(_redemptionSigner);
     }
 
     function _setRedemptionWallet(address _redemptionWallet) internal {
         redemptionWallet = _redemptionWallet;
+        emit RedemptionWalletUpdated(_redemptionWallet);
     }
 
     function _setOfferManager(address _offerManager) internal {
         offerManager = _offerManager;
+        emit OfferManagerUpdated(_offerManager);
     }    
 
     // =============================================================
@@ -99,6 +102,8 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
         // take fees and transfer currency
         uint256 netAmount = _transferFees(offer.terms.currency, offer.maker, offer.fee.recipient, offer.terms.amount, offer.fee.rate);
         _transferCurrency(offer.terms.currency, offer.maker, msg.sender, netAmount);
+
+        emit MarketOfferTaken(_hash, tokenId, msg.sender, offer);
     }
 
     function takeAsk(
@@ -121,6 +126,8 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
         // take fees and transfer currency (msg.sender always pays on behalf of the taker)
         uint256 netAmount = _transferFees(offer.terms.currency, msg.sender, offer.fee.recipient, offer.terms.amount, offer.fee.rate);
         _transferCurrency(offer.terms.currency, msg.sender, offer.maker, netAmount);
+
+        emit MarketOfferTaken(_hash, offer.collateral.identifier, taker, offer);
     }
 
     function redeem(
@@ -138,6 +145,8 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
         // transfer collateral and currency
         charge.collection.safeTransferFrom(charge.redeemer, redemptionWallet, charge.tokenId);
         _transferCurrency(charge.currency, msg.sender, redemptionWallet, charge.amount);
+
+        emit Redemption(_hash, charge);
     }
 
     function cancelOffers(
@@ -237,10 +246,12 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
 
     function _cancelOffer(address maker, uint256 salt) internal {
         cancelledOrFulfilled[maker][salt] = 1;
+        emit OfferCancelled(msg.sender, maker, salt);
     }
 
     function _incrementNonce(address maker) internal {
         nonces[maker]++;
+        emit NonceIncremented(msg.sender, maker, nonces[maker]);
     }
 
     // =============================================================

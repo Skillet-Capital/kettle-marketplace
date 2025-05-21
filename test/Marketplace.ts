@@ -3,7 +3,7 @@ import { time, loadFixture } from "@nomicfoundation/hardhat-toolbox/network-help
 import { expect } from "chai";
 import { parseUnits, Signer, ZeroAddress } from "ethers";
 
-import { TestERC20, TestERC721 } from "../typechain-types"; 
+import { KettleAsset, TestERC20, TestERC721 } from "../typechain-types"; 
 
 import { KettleMarketplace } from "../typechain-types";
 
@@ -21,7 +21,7 @@ describe("Fulfill Ask", function () {
   let redemptionWallet: Signer;
   let recipient: Signer;
 
-  let collection: TestERC721;
+  let collection: KettleAsset;
   let currency: TestERC20;
 
   beforeEach(async () => {
