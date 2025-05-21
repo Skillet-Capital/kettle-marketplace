@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "build": "graph build",
+    "graph:deploy-dev": "graph deploy kettle-bera-dev --node https://subgraphs.alchemy.com/api/subgraphs/deploy --deploy-key fQFj7KyJqzWJi --ipfs https://ipfs.satsuma.xyz dev.subgraph.yaml",
+    "graph:deploy-prod": "graph deploy kettle-bera --node https://subgraphs.alchemy.com/api/subgraphs/deploy --deploy-key fQFj7KyJqzWJi --ipfs https://ipfs.satsuma.xyz prod.subgraph.yaml"
+  },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
     "@nomicfoundation/hardhat-ethers": "^3.0.0",
@@ -30,6 +35,8 @@
     "@openzeppelin/contracts": "^5.3.0",
     "@openzeppelin/contracts-upgradeable": "^5.3.0",
     "@openzeppelin/hardhat-upgrades": "^3.9.0",
+    "@graphprotocol/graph-cli": "^0.87.0",
+    "@graphprotocol/graph-ts": "^0.37.0",
     "dotenv": "^16.5.0",
     "hardhat-tracer": "^3.2.0",
     "solmate": "^6.8.0"
