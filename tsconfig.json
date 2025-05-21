@@ -1,11 +1,26 @@
 {
   "compilerOptions": {
-    "target": "es2020",
-    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": ".",                       // ⬅️ IMPORTANT: rootDir must contain all source files
+    "module": "ESNext",
+    "target": "ES2020",
+    "declaration": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "Node",
     "strict": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true
-  }
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*", "typechain-types/**/*"],
+  "exclude": [
+    "contracts",
+    "artifacts",
+    "build",
+    "test",
+    "generated",
+    "handlers",
+    "cache",
+    "ignition",
+    "abis",
+    "typechain"  // Not typechain-types
+  ]
 }
