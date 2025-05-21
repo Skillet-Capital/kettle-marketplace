@@ -22,11 +22,11 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
     // @custom:oz-upgrades-unsafe-allow state-variable-immutable
     uint256 private constant _BASIS_POINTS = 10_000;
 
-    address public redemptionWallet;
     address public redemptionSigner;
+    address public redemptionWallet;
     address public offerManager;
 
-    mapping (address => mapping(uint256 => bool)) public cancelledOrFulfilled;
+    mapping (address => mapping(uint256 => uint256)) public cancelledOrFulfilled;
 
     uint256[50] private _gap;
 
@@ -38,6 +38,7 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
     ) external initializer {
         __Ownable_init(owner);
         __Signatures_init();
+        __ReentrancyGuard_init();
 
         _setRedemptionSigner(_redemptionSigner);
         _setRedemptionWallet(_redemptionWallet);
@@ -90,7 +91,7 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
         // hash and verify offer signature
         _hash = _hashMarketOffer(offer); 
         _validateOffer(_hash, offer.maker, offer.expiration, offer.salt, signature);
-        cancelledOrFulfilled[offer.maker][offer.salt] = true;
+        cancelledOrFulfilled[offer.maker][offer.salt] = 1;
 
         // transfer collateral
         offer.collateral.collection.safeTransferFrom(msg.sender, offer.maker, tokenId);
@@ -112,7 +113,7 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
         // hash and verify offer signature
         _hash = _hashMarketOffer(offer); 
         _validateOffer(_hash, offer.maker, offer.expiration, offer.salt, signature);
-        cancelledOrFulfilled[offer.maker][offer.salt] = true;
+        cancelledOrFulfilled[offer.maker][offer.salt] = 1;
 
         // transfer collateral and currency
         offer.collateral.collection.safeTransferFrom(offer.maker, taker, offer.collateral.identifier);
@@ -131,8 +132,8 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
 
         // hash and verify redemption signature
         _hash = _hashRedemptionCharge(redemptionSigner, charge);
-        _validateOffer(_hash, charge.redeemer, charge.expiration, charge.salt, signature);
-        cancelledOrFulfilled[charge.redeemer][charge.salt] = true;
+        _validateOffer(_hash, redemptionSigner, charge.expiration, charge.salt, signature);
+        cancelledOrFulfilled[charge.redeemer][charge.salt] = 1;
 
         // transfer collateral and currency
         charge.collection.safeTransferFrom(charge.redeemer, redemptionWallet, charge.tokenId);
@@ -207,7 +208,7 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
         bytes calldata signature
     ) internal {
         if (_expiration < block.timestamp) revert ExpiredOffer();
-        if (cancelledOrFulfilled[_signer][_salt]) revert InvalidSalt();
+        if (cancelledOrFulfilled[_signer][_salt] == 1) revert InvalidSalt();
         _verifyOfferAuthorization(_hash, _signer, signature);
     }
 
@@ -235,7 +236,7 @@ contract KettleMarketplace is IKettleMarketplace,  Initializable, OwnableUpgrade
     }
 
     function _cancelOffer(address maker, uint256 salt) internal {
-        cancelledOrFulfilled[maker][salt] = true;
+        cancelledOrFulfilled[maker][salt] = 1;
     }
 
     function _incrementNonce(address maker) internal {
