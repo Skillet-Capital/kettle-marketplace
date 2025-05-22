@@ -1501,6 +1501,16 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
+"@pythnetwork/entropy-sdk-solidity@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@pythnetwork/entropy-sdk-solidity/-/entropy-sdk-solidity-1.5.0.tgz#fcb2d4ee9124b0de4a7ceb386779ca50d5a61f18"
+  integrity sha512-ZZti5BLURe4w0HtCwy2qGJayOtAcWjjfpnUsar6fHZPG2SkC3jfj13m9WBJKLk87T1ZaSpazAdb22pm6MXG8qg==
+
+"@pythnetwork/pyth-sdk-solidity@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@pythnetwork/pyth-sdk-solidity/-/pyth-sdk-solidity-4.1.0.tgz#03ac0f31c976aef2cdbd88ef5e1b5947c767cb84"
+  integrity sha512-SPqaWH1fKwYbdTsyTLGuSqCYDEEgCXw0SFW0KaOFRgzcGYcdZY/DYWhedCzFNb9lY/1RTk+ucgTtxO5e3Z1fIg==
+
 "@rescript/std@9.0.0":
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/@rescript/std/-/std-9.0.0.tgz#df53f3fa5911cb4e85bd66b92e9e58ddf3e4a7e1"
