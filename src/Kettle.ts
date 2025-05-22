@@ -481,4 +481,18 @@ export class Kettle {
       throw new Error("Unable to confirm transaction, please check block explorer and try again");
     }
   }
+
+  public bundleUserOps(
+    steps: (SendStep)[]
+  ): UserOp[] {
+    const ops: UserOp[] = [];
+
+    for (const step of steps) {
+      if (step.action === StepAction.SEND) {
+        ops.push(step.userOp);
+      }
+    }
+
+    return ops;
+  }
 }

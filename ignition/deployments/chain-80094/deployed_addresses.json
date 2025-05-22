@@ -13,5 +13,6 @@
   "KettleAsset#PROD_kettle_asset": "0x1818151E734E3954823f5d0bFD934f552259E7c8",
   "KettleAsset#DEV_kettle_asset_proxy_admin": "0x4FA9C3f578732A01CF1399Ac01269604318aABb0",
   "KettleAsset#PROD_kettle_asset_proxy_admin": "0x9E27Fadb0b3AcFa1694CdBE17473690F0a6C3498",
-  "DevMintTokens#KettleAsset": "0x0aEA50e7c8D41023d628b10960BC71d089668Fc6"
+  "DevMintTokens#KettleAsset": "0x0aEA50e7c8D41023d628b10960BC71d089668Fc6",
+  "TestCurrency#TestERC20": "0x51cCeffe62221D0494EA5E6977D191A9c0b2F604"
 }
