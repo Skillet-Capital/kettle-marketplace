@@ -180,12 +180,6 @@ export class Kettle {
     return [...approvalActions, ...allowanceActions, redeemAction];
   }
 
-
-  public async hashRedemptionCharge(charge: RedemptionCharge): Promise<string> {
-    const signer = await this.contract.redemptionSigner();
-    return this.contract.hashRedemptionCharge(signer, charge)
-  }
-
   public async createMarketOffer(
     input: CreateMarketOfferInput,
     maker: string | Addressable,
@@ -305,6 +299,15 @@ export class Kettle {
     };
 
     return [cancelAction];
+  }
+
+  public hashMarketOffer(offer: MarketOffer): string {
+    return TypedDataEncoder.hashStruct("MarketOffer", MARKET_OFFER_TYPE, offer);
+  }
+
+  public async hashRedemptionCharge(charge: RedemptionCharge): Promise<string> {
+    const signer = await this.contract.redemptionSigner();
+    return this.contract.hashRedemptionCharge(signer, charge)
   }
 
   public async _formatMarketOffer(
