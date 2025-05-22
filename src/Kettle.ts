@@ -281,6 +281,25 @@ export class Kettle {
     return [...approvalActions, takeOfferAction];
   }
 
+  public async encodeTakeAsk(
+    input: TakeOfferInput,
+    taker: string | Addressable
+  ) {
+    const _taker = await this._resolveAddress(taker);
+
+    return {
+      to: this.contractAddress,
+      data: this.kettleInterface.encodeFunctionData(
+        this.kettleInterface.getFunction("takeAsk"),
+        [
+          _taker,
+          input.offer,
+          input.signature
+        ]
+      )
+    };
+  }
+
   public async cancelOffers(salts: Numberish[]): Promise<SendStep[]> {
     const cancelAction: SendStep = {
       action: StepAction.SEND,
