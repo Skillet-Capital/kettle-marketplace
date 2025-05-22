@@ -16,6 +16,12 @@ const TestCurrencyModule = buildModule("TestCurrency", (m) => {
     parseEther("1000000")
   ], { id: "mint_currency_2" });
 
+  m.call(currency, "mint", [
+    "0x106637f4df98522dd8b6791ca3ecc4cff5fc9961",
+    parseEther("10000")
+  ], { id: "mint_currency_3" });
+  
+
   return { currency }
 });
 

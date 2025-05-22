@@ -1,4 +1,5 @@
 import { ethers } from "ethers";
+import { BASIS_POINTS_DIVISOR } from "./constants";
 import { TestERC721__factory, TestERC20__factory } from "./types";
 
 export const randomSalt = (): string => {
@@ -29,3 +30,12 @@ export const currencyAllowance = async (
   const contract = TestERC20__factory.connect(currency, provider);
   return contract.allowance(owner, operator);
 }
+
+function mulFee(amount: bigint | string | number, rate: bigint | string | number) {
+  return BigInt(amount) * BigInt(rate) / BASIS_POINTS_DIVISOR;
+}
+
+export function calculateNetAmount(amount: bigint | string | number, rate: bigint | string | number) {
+  return BigInt(amount) - mulFee(amount, rate);
+}
+
