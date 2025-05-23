@@ -300,6 +300,19 @@ export class Kettle {
     };
   }
 
+  public async encodeRedeem(
+    charge: ChargeWithSignature,
+    taker: string
+  ) {
+    return {
+      to: this.contractAddress,
+      data: this.kettleInterface.encodeFunctionData(
+        this.kettleInterface.getFunction("redeem"),
+        [charge.charge, charge.signature]
+      )
+    }
+  }
+
   public async cancelOffers(salts: Numberish[]): Promise<SendStep[]> {
     const cancelAction: SendStep = {
       action: StepAction.SEND,
