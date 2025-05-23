@@ -301,8 +301,7 @@ export class Kettle {
   }
 
   public async encodeRedeem(
-    charge: ChargeWithSignature,
-    taker: string
+    charge: ChargeWithSignature
   ) {
     return {
       to: this.contractAddress,
