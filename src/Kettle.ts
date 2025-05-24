@@ -281,18 +281,16 @@ export class Kettle {
     return [...approvalActions, takeOfferAction];
   }
 
-  public async encodeTakeAsk(
+  public encodeTakeAsk(
     input: TakeOfferInput,
-    taker: string | Addressable
+    taker: string
   ) {
-    const _taker = await this._resolveAddress(taker);
-
     return {
       to: this.contractAddress,
       data: this.kettleInterface.encodeFunctionData(
         this.kettleInterface.getFunction("takeAsk"),
         [
-          _taker,
+          taker,
           input.offer,
           input.signature
         ]
