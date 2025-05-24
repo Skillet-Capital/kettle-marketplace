@@ -27,3 +27,35 @@ dataSources:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleAssetTransfer
       file: ./handlers/token.ts
+  - kind: ethereum
+    name: KettleMarketplace
+    network: berachain-mainnet
+    source:
+      address: "0xf9eFE180bF2b5B41C867D6f5263252eBBf08dd55"
+      abi: KettleMarketplace
+      startBlock: 5000000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Activity
+        - Redemption
+        - RedemptionSignerUpdate
+        - RedemptionWalletUpdate
+        - OfferManagerUpdate
+      abis:
+        - name: KettleMarketplace
+          file: ./abis/KettleMarketplace.json
+      eventHandlers:
+        - event: MarketOfferTaken(indexed bytes32,indexed uint256,indexed address,(uint8,address,address,(uint8,address,uint256),(address,uint256),(address,uint256),uint256,uint256))
+          handler: handleMarketOfferTaken
+        - event: Redemption(indexed bytes32,(address,address,uint256,address,uint256,uint256,uint256))
+          handler: handleRedemption
+        - event: RedemptionSignerUpdated(indexed address)
+          handler: handleRedemptionSignerUpdated
+        - event: RedemptionWalletUpdated(indexed address)
+          handler: handleRedemptionWalletUpdated
+        - event: OfferManagerUpdated(indexed address)
+          handler: handleOfferManagerUpdated
+      file: ./handlers/activity.ts

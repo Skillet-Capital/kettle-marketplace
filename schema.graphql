@@ -1,3 +1,7 @@
+# ====================================
+#           Token Events
+# ====================================
+
 type Account @entity {
   id: Bytes!
   assets: [Asset!]! @derivedFrom(field: "owner")
@@ -21,5 +25,57 @@ type Transfer @entity {
   to: Bytes!
   tokenId: BigInt!
   collection: Bytes!
+  timestamp: BigInt!
+}
+
+# ====================================
+#           Token Events
+# ====================================
+
+type Activity @entity {
+  id: Bytes!
+  type: String!
+  buyer: Bytes!
+  seller: Bytes!
+  collateralId: String!
+  collection: Bytes!
+  tokenId: BigInt!
+  currency: Bytes!
+  amount: BigInt!
+  timestamp: BigInt!
+  txn: Bytes!
+}
+
+type Redemption @entity {
+  id: String!
+  redemptionHash: Bytes!
+  redeemer: Bytes!
+  collection: Bytes!
+  tokenId: BigInt!
+  collateralId: String!
+  currency: Bytes!
+  amount: BigInt!
+  timestamp: BigInt!
+}
+
+# ====================================
+#           Admin Updates
+# ====================================
+
+type RedemptionSignerUpdate @entity {
+  id: Bytes!
+  address: Bytes!
+  timestamp: BigInt!
+}
+
+type RedemptionWalletUpdate @entity {
+  id: Bytes!
+  address: Bytes!
+  timestamp: BigInt!
+}
+
+type OfferManagerUpdate @entity {
+  id: Bytes!
+  address: Bytes!
   timestamp: BigInt!
 }
