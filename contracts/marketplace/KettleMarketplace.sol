@@ -10,7 +10,7 @@ import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Ini
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {ReentrancyGuardUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol";
 
-import {IKettleMarketplace} from "./interfaces/IKettleMarketplace.sol";
+import {IKettleMarketplace} from "./IKettleMarketplace.sol";
 import {Signatures} from "./Signatures.sol";
 
 import "./Errors.sol";
