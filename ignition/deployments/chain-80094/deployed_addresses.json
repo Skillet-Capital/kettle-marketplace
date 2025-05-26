@@ -1,18 +1,11 @@
 {
-  "KettleMarketplace#KettleImplementation": "0x59FF42A4160e046e2873f9371fD56dd0326C0786",
-  "KettleMarketplace#DEV_kettle_proxy": "0xf9eFE180bF2b5B41C867D6f5263252eBBf08dd55",
-  "KettleMarketplace#PROD_kettle_proxy": "0x3d0b6A41f446528FF9f5069D96e40FB29efC7e23",
-  "KettleMarketplace#DEV_kettle": "0xf9eFE180bF2b5B41C867D6f5263252eBBf08dd55",
-  "KettleMarketplace#PROD_kettle": "0x3d0b6A41f446528FF9f5069D96e40FB29efC7e23",
-  "KettleMarketplace#DEV_proxy_admin": "0xE4631De9827369737846731905161e27D60Dd444",
-  "KettleMarketplace#PROD_proxy_admin": "0x65ED72bB46fB68590Eb4442F0B10D279c5Bc8671",
-  "KettleAsset#KettleAssetImplementation": "0x1Bf2E1CC5Cb7395046aD094a3577F951c9FC6280",
-  "KettleAsset#DEV_kettle_asset_proxy": "0x0aEA50e7c8D41023d628b10960BC71d089668Fc6",
-  "KettleAsset#PROD_kettle_asset_proxy": "0x1818151E734E3954823f5d0bFD934f552259E7c8",
-  "KettleAsset#DEV_kettle_asset": "0x0aEA50e7c8D41023d628b10960BC71d089668Fc6",
-  "KettleAsset#PROD_kettle_asset": "0x1818151E734E3954823f5d0bFD934f552259E7c8",
-  "KettleAsset#DEV_kettle_asset_proxy_admin": "0x4FA9C3f578732A01CF1399Ac01269604318aABb0",
-  "KettleAsset#PROD_kettle_asset_proxy_admin": "0x9E27Fadb0b3AcFa1694CdBE17473690F0a6C3498",
-  "DevMintTokens#KettleAsset": "0x0aEA50e7c8D41023d628b10960BC71d089668Fc6",
-  "TestCurrency#TestERC20": "0x51cCeffe62221D0494EA5E6977D191A9c0b2F604"
+  "DEV_KettleAssetFactory#asset_implementation": "0x3586ec90a4d8022A592de50EBD3682aBE8430d06",
+  "DEV_KettleAssetFactory#factory_implementation": "0x4A0F834e2D4D9B5BD9c8f014A977A53A6e6e8309",
+  "DEV_KettleAssetFactory#factory_proxy": "0x3Ff67a0EAd1A4C1790eC7F135c19CB6736ee1E49",
+  "DEV_KettleAssetFactory#KettleAssetFactory": "0x3Ff67a0EAd1A4C1790eC7F135c19CB6736ee1E49",
+  "DEV_KettleAssetFactory#factory_proxy_admin": "0x9025636B2BA0076B5Fe41edbfCB36bD5dEb2d510",
+  "DEV_KettleMarketplace#marketplace_implementation": "0xb2E790C11Ad961c76fdD18Ea0749E679c9F96d9d",
+  "DEV_KettleMarketplace#marketplace_proxy": "0x1E42Eed80DB227167cB2D5509A0e750bAB772DF9",
+  "DEV_KettleMarketplace#marketplace_contract": "0x1E42Eed80DB227167cB2D5509A0e750bAB772DF9",
+  "DEV_KettleMarketplace#marketplace_proxy_admin": "0x7379744f92ADDCC6b15F5122054eE9834627721F"
 }

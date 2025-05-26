@@ -66,9 +66,17 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC1967__factory>;
     getContractFactory(
+      name: "BeaconProxy",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.BeaconProxy__factory>;
+    getContractFactory(
       name: "IBeacon",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IBeacon__factory>;
+    getContractFactory(
+      name: "UpgradeableBeacon",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.UpgradeableBeacon__factory>;
     getContractFactory(
       name: "ERC1967Proxy",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -118,6 +126,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Address__factory>;
     getContractFactory(
+      name: "Create2",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Create2__factory>;
+    getContractFactory(
       name: "MerkleProof",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.MerkleProof__factory>;
@@ -142,13 +154,21 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IKettleAsset__factory>;
     getContractFactory(
-      name: "IKettleMarketplace",
+      name: "IKettleAssetFactory",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IKettleMarketplace__factory>;
+    ): Promise<Contracts.IKettleAssetFactory__factory>;
     getContractFactory(
       name: "KettleAsset",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.KettleAsset__factory>;
+    getContractFactory(
+      name: "KettleAssetFactory",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.KettleAssetFactory__factory>;
+    getContractFactory(
+      name: "IKettleMarketplace",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IKettleMarketplace__factory>;
     getContractFactory(
       name: "KettleMarketplace",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -244,10 +264,20 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IERC1967>;
     getContractAt(
+      name: "BeaconProxy",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.BeaconProxy>;
+    getContractAt(
       name: "IBeacon",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
     ): Promise<Contracts.IBeacon>;
+    getContractAt(
+      name: "UpgradeableBeacon",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.UpgradeableBeacon>;
     getContractAt(
       name: "ERC1967Proxy",
       address: string | ethers.Addressable,
@@ -309,6 +339,11 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.Address>;
     getContractAt(
+      name: "Create2",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Create2>;
+    getContractAt(
       name: "MerkleProof",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -339,15 +374,25 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IKettleAsset>;
     getContractAt(
-      name: "IKettleMarketplace",
+      name: "IKettleAssetFactory",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
-    ): Promise<Contracts.IKettleMarketplace>;
+    ): Promise<Contracts.IKettleAssetFactory>;
     getContractAt(
       name: "KettleAsset",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
     ): Promise<Contracts.KettleAsset>;
+    getContractAt(
+      name: "KettleAssetFactory",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.KettleAssetFactory>;
+    getContractAt(
+      name: "IKettleMarketplace",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IKettleMarketplace>;
     getContractAt(
       name: "KettleMarketplace",
       address: string | ethers.Addressable,
@@ -437,9 +482,17 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IERC1967>;
     deployContract(
+      name: "BeaconProxy",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.BeaconProxy>;
+    deployContract(
       name: "IBeacon",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IBeacon>;
+    deployContract(
+      name: "UpgradeableBeacon",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.UpgradeableBeacon>;
     deployContract(
       name: "ERC1967Proxy",
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -489,6 +542,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Address>;
     deployContract(
+      name: "Create2",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.Create2>;
+    deployContract(
       name: "MerkleProof",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.MerkleProof>;
@@ -513,13 +570,21 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IKettleAsset>;
     deployContract(
-      name: "IKettleMarketplace",
+      name: "IKettleAssetFactory",
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.IKettleMarketplace>;
+    ): Promise<Contracts.IKettleAssetFactory>;
     deployContract(
       name: "KettleAsset",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.KettleAsset>;
+    deployContract(
+      name: "KettleAssetFactory",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.KettleAssetFactory>;
+    deployContract(
+      name: "IKettleMarketplace",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IKettleMarketplace>;
     deployContract(
       name: "KettleMarketplace",
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -615,10 +680,20 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IERC1967>;
     deployContract(
+      name: "BeaconProxy",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.BeaconProxy>;
+    deployContract(
       name: "IBeacon",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IBeacon>;
+    deployContract(
+      name: "UpgradeableBeacon",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.UpgradeableBeacon>;
     deployContract(
       name: "ERC1967Proxy",
       args: any[],
@@ -680,6 +755,11 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Address>;
     deployContract(
+      name: "Create2",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.Create2>;
+    deployContract(
       name: "MerkleProof",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -710,15 +790,25 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IKettleAsset>;
     deployContract(
-      name: "IKettleMarketplace",
+      name: "IKettleAssetFactory",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.IKettleMarketplace>;
+    ): Promise<Contracts.IKettleAssetFactory>;
     deployContract(
       name: "KettleAsset",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.KettleAsset>;
+    deployContract(
+      name: "KettleAssetFactory",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.KettleAssetFactory>;
+    deployContract(
+      name: "IKettleMarketplace",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IKettleMarketplace>;
     deployContract(
       name: "KettleMarketplace",
       args: any[],

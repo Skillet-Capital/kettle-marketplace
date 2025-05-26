@@ -1,8 +1,8 @@
 import { Address, BigInt } from "@graphprotocol/graph-ts";
 
 import {
-  Transfer as TransferEvent,
-} from "../generated/KettleAsset/KettleAsset";
+  KettleAssetTransferred as KettleAssetTransferredEvent,
+} from "../generated/KettleAssetFactory/KettleAssetFactory";
 
 import {
   Account,
@@ -31,9 +31,9 @@ function fetchAccount(address: Address): Account {
   return account as Account;
 }
 
-export function handleAssetTransfer(event: TransferEvent): void {
+export function handleAssetTransfer(event: KettleAssetTransferredEvent): void {
 
-  let token = fetchToken(event.address, event.params.tokenId);
+  let token = fetchToken(event.params.asset, event.params.tokenId);
   let to = fetchAccount(event.params.to);
 
   const _transfer = new Transfer([event.transaction.hash.toHexString(), event.logIndex.toString()].join("/"));

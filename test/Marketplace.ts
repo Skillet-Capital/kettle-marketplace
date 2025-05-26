@@ -3,7 +3,7 @@ import { time, loadFixture } from "@nomicfoundation/hardhat-toolbox/network-help
 import { expect } from "chai";
 import { parseUnits, Signer, ZeroAddress } from "ethers";
 
-import { KettleAsset, TestERC20, TestERC721 } from "../typechain-types"; 
+import { KettleAsset, KettleAssetFactory, TestERC20, TestERC721 } from "../typechain-types"; 
 
 import { KettleMarketplace } from "../typechain-types";
 
@@ -14,6 +14,7 @@ import { executeCreateSteps, executeTakeSteps } from "./utils";
 describe("Fulfill Ask", function () {
   let _kettle: KettleMarketplace;
   let kettle: Kettle;
+  let factory: KettleAssetFactory;
 
   let buyer: Signer;
   let seller: Signer;
@@ -27,6 +28,7 @@ describe("Fulfill Ask", function () {
   beforeEach(async () => {
     const fixture = await loadFixture(deployKettle);
     _kettle = fixture.kettle;
+    factory = fixture.factory;
     redemptionAdmin = fixture.redemptionSigner as unknown as Signer;
     redemptionWallet = fixture.redemptionWallet as unknown as Signer;
     buyer = fixture.accounts[0] as unknown as Signer;
@@ -48,7 +50,7 @@ describe("Fulfill Ask", function () {
       amount = parseUnits("100", 18);
       fee = 100n;
 
-      await collection.mint(seller, tokenId);
+      await factory.mint(collection, seller, tokenId);
       await currency.mint(buyer, amount);
     });
 
@@ -94,7 +96,7 @@ describe("Fulfill Ask", function () {
       amount = parseUnits("100", 18);
       fee = 100n;
 
-      await collection.mint(seller, tokenId);
+      await factory.mint(collection, seller, tokenId);
       await currency.mint(buyer, amount); 
     });
 
@@ -139,7 +141,7 @@ describe("Fulfill Ask", function () {
       tokenId = 1;
       amount = parseUnits("100", 18);
 
-      await collection.mint(seller, tokenId);
+      await factory.mint(collection, seller, tokenId);
       await currency.mint(seller, amount);
     });
 

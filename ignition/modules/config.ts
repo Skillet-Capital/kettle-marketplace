@@ -1,0 +1,13 @@
+interface Config {
+  REDEMPTION_SIGNER: string;
+  REDEMPTION_WALLET: string;
+  OFFER_MANAGER: string;
+  MINTER: string;
+}
+
+export const config: Config = {
+    REDEMPTION_SIGNER: "0x5b090b3c859a475644353c3596c2b92ae98c6006",
+    REDEMPTION_WALLET: "0x630aa3ff3f3d5b9ebea9bef30016778a7d3f6436",
+    OFFER_MANAGER: "0x4f0b4fab88f7864dc200f43b11303b99bdda4f78",
+    MINTER: "0x5b090b3c859a475644353c3596c2b92ae98c6006"
+}

@@ -5,11 +5,11 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: KettleAsset
+    name: KettleAssetFactory
     network: berachain-mainnet
     source:
-      address: "0x0aEA50e7c8D41023d628b10960BC71d089668Fc6"
-      abi: KettleAsset
+      address: "0x3Ff67a0EAd1A4C1790eC7F135c19CB6736ee1E49"
+      abi: KettleAssetFactory
       startBlock: 5000000
     mapping:
       kind: ethereum/events
@@ -21,17 +21,17 @@ dataSources:
         - Balance
         - Transfer
       abis:
-        - name: KettleAsset
-          file: ./abis/KettleAsset.json
+        - name: KettleAssetFactory
+          file: ./abis/KettleAssetFactory.json
       eventHandlers:
-        - event: Transfer(indexed address,indexed address,indexed uint256)
+        - event: KettleAssetTransferred(indexed address,indexed address,indexed address,uint256)
           handler: handleAssetTransfer
       file: ./handlers/token.ts
   - kind: ethereum
     name: KettleMarketplace
     network: berachain-mainnet
     source:
-      address: "0xf9eFE180bF2b5B41C867D6f5263252eBBf08dd55"
+      address: "0x1E42Eed80DB227167cB2D5509A0e750bAB772DF9"
       abi: KettleMarketplace
       startBlock: 5000000
     mapping:
