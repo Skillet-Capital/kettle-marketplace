@@ -5,12 +5,12 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: ModelFactory
-    network: base
+    name: KettleAssetFactory
+    network: berachain-mainnet
     source:
-      address: "0x325BD9C3a2835FaFc510fF5C6A18CaDC5b04a6c8"
-      abi: ModelFactory
-      startBlock: 22100000
+      address: "0x8C0F74EB9D8030FAbE65eC8169ef171a625E794b"
+      abi: KettleAssetFactory
+      startBlock: 5000000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -21,9 +21,41 @@ dataSources:
         - Balance
         - Transfer
       abis:
-        - name: ModelFactory
-          file: ./abis/ModelFactory.json
+        - name: KettleAssetFactory
+          file: ./abis/KettleAssetFactory.json
       eventHandlers:
         - event: KettleAssetTransferred(indexed address,indexed address,indexed address,uint256)
           handler: handleAssetTransfer
       file: ./handlers/token.ts
+  - kind: ethereum
+    name: KettleMarketplace
+    network: berachain-mainnet
+    source:
+      address: "0x6a384c35CA25aC4D3769791f5e08344932fF013A"
+      abi: KettleMarketplace
+      startBlock: 5000000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Activity
+        - Redemption
+        - RedemptionSignerUpdate
+        - RedemptionWalletUpdate
+        - OfferManagerUpdate
+      abis:
+        - name: KettleMarketplace
+          file: ./abis/KettleMarketplace.json
+      eventHandlers:
+        - event: MarketOfferTaken(indexed bytes32,indexed uint256,indexed address,(uint8,address,address,(uint8,address,uint256),(address,uint256),(address,uint256),uint256,uint256))
+          handler: handleMarketOfferTaken
+        - event: Redemption(indexed bytes32,(address,address,uint256,address,uint256,uint256,uint256))
+          handler: handleRedemption
+        - event: RedemptionSignerUpdated(indexed address)
+          handler: handleRedemptionSignerUpdated
+        - event: RedemptionWalletUpdated(indexed address)
+          handler: handleRedemptionWalletUpdated
+        - event: OfferManagerUpdated(indexed address)
+          handler: handleOfferManagerUpdated
+      file: ./handlers/activity.ts

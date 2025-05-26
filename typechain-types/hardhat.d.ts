@@ -22,6 +22,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Initializable__factory>;
     getContractFactory(
+      name: "ERC20Upgradeable",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC20Upgradeable__factory>;
+    getContractFactory(
       name: "ERC721Upgradeable",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ERC721Upgradeable__factory>;
@@ -102,6 +106,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.TransparentUpgradeableProxy__factory>;
     getContractFactory(
+      name: "IERC20Metadata",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC20Metadata__factory>;
+    getContractFactory(
       name: "IERC20",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC20__factory>;
@@ -150,10 +158,6 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Strings__factory>;
     getContractFactory(
-      name: "IKettleAsset",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IKettleAsset__factory>;
-    getContractFactory(
       name: "IKettleAssetFactory",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IKettleAssetFactory__factory>;
@@ -177,6 +181,10 @@ declare module "hardhat/types/runtime" {
       name: "Signatures",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Signatures__factory>;
+    getContractFactory(
+      name: "KettleVolumeTracker",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.KettleVolumeTracker__factory>;
     getContractFactory(
       name: "TestERC20",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -209,6 +217,11 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.Initializable>;
     getContractAt(
+      name: "ERC20Upgradeable",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC20Upgradeable>;
+    getContractAt(
       name: "ERC721Upgradeable",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -309,6 +322,11 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.TransparentUpgradeableProxy>;
     getContractAt(
+      name: "IERC20Metadata",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC20Metadata>;
+    getContractAt(
       name: "IERC20",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -369,11 +387,6 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.Strings>;
     getContractAt(
-      name: "IKettleAsset",
-      address: string | ethers.Addressable,
-      signer?: ethers.Signer
-    ): Promise<Contracts.IKettleAsset>;
-    getContractAt(
       name: "IKettleAssetFactory",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -403,6 +416,11 @@ declare module "hardhat/types/runtime" {
       address: string | ethers.Addressable,
       signer?: ethers.Signer
     ): Promise<Contracts.Signatures>;
+    getContractAt(
+      name: "KettleVolumeTracker",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.KettleVolumeTracker>;
     getContractAt(
       name: "TestERC20",
       address: string | ethers.Addressable,
@@ -438,6 +456,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Initializable>;
     deployContract(
+      name: "ERC20Upgradeable",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ERC20Upgradeable>;
+    deployContract(
       name: "ERC721Upgradeable",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.ERC721Upgradeable>;
@@ -518,6 +540,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.TransparentUpgradeableProxy>;
     deployContract(
+      name: "IERC20Metadata",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IERC20Metadata>;
+    deployContract(
       name: "IERC20",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IERC20>;
@@ -566,10 +592,6 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Strings>;
     deployContract(
-      name: "IKettleAsset",
-      signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.IKettleAsset>;
-    deployContract(
       name: "IKettleAssetFactory",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IKettleAssetFactory>;
@@ -593,6 +615,10 @@ declare module "hardhat/types/runtime" {
       name: "Signatures",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Signatures>;
+    deployContract(
+      name: "KettleVolumeTracker",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.KettleVolumeTracker>;
     deployContract(
       name: "TestERC20",
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -625,6 +651,11 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Initializable>;
     deployContract(
+      name: "ERC20Upgradeable",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ERC20Upgradeable>;
+    deployContract(
       name: "ERC721Upgradeable",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -725,6 +756,11 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.TransparentUpgradeableProxy>;
     deployContract(
+      name: "IERC20Metadata",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IERC20Metadata>;
+    deployContract(
       name: "IERC20",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -785,11 +821,6 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Strings>;
     deployContract(
-      name: "IKettleAsset",
-      args: any[],
-      signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.IKettleAsset>;
-    deployContract(
       name: "IKettleAssetFactory",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -819,6 +850,11 @@ declare module "hardhat/types/runtime" {
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Signatures>;
+    deployContract(
+      name: "KettleVolumeTracker",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.KettleVolumeTracker>;
     deployContract(
       name: "TestERC20",
       args: any[],

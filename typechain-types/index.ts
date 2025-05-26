@@ -12,6 +12,8 @@ export type { OwnableUpgradeable } from "./@openzeppelin/contracts-upgradeable/a
 export { OwnableUpgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable__factory";
 export type { Initializable } from "./@openzeppelin/contracts-upgradeable/proxy/utils/Initializable";
 export { Initializable__factory } from "./factories/@openzeppelin/contracts-upgradeable/proxy/utils/Initializable__factory";
+export type { ERC20Upgradeable } from "./@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable";
+export { ERC20Upgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable__factory";
 export type { ERC721Upgradeable } from "./@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable";
 export { ERC721Upgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable__factory";
 export type { ContextUpgradeable } from "./@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable";
@@ -52,6 +54,8 @@ export type { ITransparentUpgradeableProxy } from "./@openzeppelin/contracts/pro
 export { ITransparentUpgradeableProxy__factory } from "./factories/@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol/ITransparentUpgradeableProxy__factory";
 export type { TransparentUpgradeableProxy } from "./@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol/TransparentUpgradeableProxy";
 export { TransparentUpgradeableProxy__factory } from "./factories/@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol/TransparentUpgradeableProxy__factory";
+export type { IERC20Metadata } from "./@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata";
+export { IERC20Metadata__factory } from "./factories/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata__factory";
 export type { IERC20 } from "./@openzeppelin/contracts/token/ERC20/IERC20";
 export { IERC20__factory } from "./factories/@openzeppelin/contracts/token/ERC20/IERC20__factory";
 export type { SafeERC20 } from "./@openzeppelin/contracts/token/ERC20/utils/SafeERC20";
@@ -76,8 +80,6 @@ export type { SafeCast } from "./@openzeppelin/contracts/utils/math/SafeCast";
 export { SafeCast__factory } from "./factories/@openzeppelin/contracts/utils/math/SafeCast__factory";
 export type { Strings } from "./@openzeppelin/contracts/utils/Strings";
 export { Strings__factory } from "./factories/@openzeppelin/contracts/utils/Strings__factory";
-export type { IKettleAsset } from "./contracts/factory/IKettleAsset";
-export { IKettleAsset__factory } from "./factories/contracts/factory/IKettleAsset__factory";
 export type { IKettleAssetFactory } from "./contracts/factory/IKettleAssetFactory";
 export { IKettleAssetFactory__factory } from "./factories/contracts/factory/IKettleAssetFactory__factory";
 export type { KettleAsset } from "./contracts/factory/KettleAsset";
@@ -90,6 +92,8 @@ export type { KettleMarketplace } from "./contracts/marketplace/KettleMarketplac
 export { KettleMarketplace__factory } from "./factories/contracts/marketplace/KettleMarketplace__factory";
 export type { Signatures } from "./contracts/marketplace/Signatures";
 export { Signatures__factory } from "./factories/contracts/marketplace/Signatures__factory";
+export type { KettleVolumeTracker } from "./contracts/rewards/KettleVolumeTracker";
+export { KettleVolumeTracker__factory } from "./factories/contracts/rewards/KettleVolumeTracker__factory";
 export type { TestERC20 } from "./contracts/test/TestERC20";
 export { TestERC20__factory } from "./factories/contracts/test/TestERC20__factory";
 export type { TestERC721 } from "./contracts/test/TestERC721";

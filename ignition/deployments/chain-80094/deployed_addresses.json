@@ -7,5 +7,22 @@
   "DEV_KettleMarketplace#marketplace_implementation": "0xb2E790C11Ad961c76fdD18Ea0749E679c9F96d9d",
   "DEV_KettleMarketplace#marketplace_proxy": "0x1E42Eed80DB227167cB2D5509A0e750bAB772DF9",
   "DEV_KettleMarketplace#marketplace_contract": "0x1E42Eed80DB227167cB2D5509A0e750bAB772DF9",
-  "DEV_KettleMarketplace#marketplace_proxy_admin": "0x7379744f92ADDCC6b15F5122054eE9834627721F"
+  "DEV_KettleMarketplace#marketplace_proxy_admin": "0x7379744f92ADDCC6b15F5122054eE9834627721F",
+  "PROD_KettleAssetFactory#asset_implementation": "0x172DeF986c5F67124Fcc32E3FCf12a3F4f6264fa",
+  "PROD_KettleAssetFactory#factory_implementation": "0xfae77588E5b7ea7fA4561ef7E06B826737349C73",
+  "PROD_KettleAssetFactory#factory_proxy": "0x8C0F74EB9D8030FAbE65eC8169ef171a625E794b",
+  "PROD_KettleAssetFactory#KettleAssetFactory": "0x8C0F74EB9D8030FAbE65eC8169ef171a625E794b",
+  "PROD_KettleAssetFactory#factory_proxy_admin": "0x281Bac62B4F35a5B467025a5D30CA36C8EcEFe72",
+  "PROD_KettleMarketplace#marketplace_implementation": "0xA00f0b8Bf721a289aB447580238E97230023933A",
+  "PROD_KettleMarketplace#marketplace_proxy": "0x6a384c35CA25aC4D3769791f5e08344932fF013A",
+  "PROD_KettleMarketplace#marketplace_contract": "0x6a384c35CA25aC4D3769791f5e08344932fF013A",
+  "PROD_KettleMarketplace#marketplace_proxy_admin": "0xC6596AA421AF4EdacBa7eCf44e3742001489EcAf",
+  "PROD_KettleVolumeTracker#tracker_implementation": "0xc800FcE47365d58713Bb2Bfda12bFC159e594257",
+  "PROD_KettleVolumeTracker#tracker_proxy": "0xD25b4ae68E4F898cfD3CD0646D35Ab9b48c8cD54",
+  "PROD_KettleVolumeTracker#tracker_contract": "0xD25b4ae68E4F898cfD3CD0646D35Ab9b48c8cD54",
+  "PROD_KettleVolumeTracker#tracker_proxy_admin": "0x4f3537fc6C6c0d93C1594D203F6321a7Ad4577bB",
+  "DEV_KettleVolumeTracker#tracker_implementation": "0x56FC1CD3E6CCe4125f6864c75355F016AB03a0C5",
+  "DEV_KettleVolumeTracker#tracker_proxy": "0x62c4Ede34a74a869aDD69cFC32582d2E019bb17E",
+  "DEV_KettleVolumeTracker#tracker_contract": "0x62c4Ede34a74a869aDD69cFC32582d2E019bb17E",
+  "DEV_KettleVolumeTracker#tracker_proxy_admin": "0x312Dc186d60d770C396DD582Be2fd4ca68c476F6"
 }
