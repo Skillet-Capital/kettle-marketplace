@@ -5,13 +5,19 @@ import {
   KettleMarketplace__factory,
   TestERC20__factory,
   TestERC721__factory,
+  KettleAssetFactory,
+  KettleAssetFactory__factory,
+  KettleAsset__factory,
+  BeaconProxy__factory
 } from "../typechain-types";
 
-
-export type { KettleContract };
+export type { KettleContract, KettleAssetFactory };
 
 export {
   KettleMarketplace__factory as Kettle__factory,
+  KettleAssetFactory__factory,
+  KettleAsset__factory,
+  BeaconProxy__factory,
   TestERC20__factory,
   TestERC721__factory
 };

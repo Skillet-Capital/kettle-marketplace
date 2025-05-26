@@ -363,7 +363,7 @@ export class Kettle {
       },
       expiration: input.expiration,
       salt: randomSalt(),
-      nonce: await this.contract.nonces(maker).then((_n) => _n.toString())
+      nonce: await this.contract.nonces(maker).then((_n: any) => _n.toString())
     }
   }
 
