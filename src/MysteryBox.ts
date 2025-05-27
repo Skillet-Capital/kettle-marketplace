@@ -74,6 +74,7 @@ export class MysteryBox {
     phase: string;
     privateMintOpenTime: number | bigint;
     publicMintOpenTime: number | bigint;
+    totalMinted: number | bigint;
   }> {
     return {
       name: await this.contract.name(),
@@ -84,6 +85,7 @@ export class MysteryBox {
       phase: await this.contract.getCurrentMintPhase(),
       privateMintOpenTime: await this.contract.privateMintOpenTime(),
       publicMintOpenTime: await this.contract.publicMintOpenTime(),
+      totalMinted: await this.contract.totalMinted(),
     }
   }
 

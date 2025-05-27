@@ -36,6 +36,10 @@ const MysteryBoxSeason1Module = buildModule(formatId("MysteryBoxSeason1"), (m) =
     1748379600,
   ], { id: "initialize_mystery_box_season_1" });
 
+  m.call(mysteryBox, "setWhitelistStatus", ["0x106637f4df98522dd8b6791ca3ecc4cff5fc9961", true], { id: "set_whitelist_status_mystery_box_season_1" });
+
+  m.call(mysteryBox, "setMintTimes", [1748373600, 1748379600], { id: "set_mint_times_mystery_box_season_1" });
+
   return { mysteryBox };
 });
 
