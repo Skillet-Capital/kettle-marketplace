@@ -1,61 +1,28 @@
 import {
-  ADDRESS_ZERO,
-  BASIS_POINTS_DIVISOR,
-  KETTLE_CONTRACT_NAME,
-  KETTLE_CONTRACT_VERSION,
-  MARKET_OFFER_TYPE,
-  REDEMPTION_CHARGE_TYPE
-} from "./constants";
-
-import {
   Provider,
   Signer,
   JsonRpcProvider,
   JsonRpcSigner,
-  TypedDataEncoder,
   Addressable,
   MaxUint256
 } from "ethers";
 
 import type {
-  KettleContract,
-  CreateMarketOfferInput,
-  MarketOffer,
-  OfferWithSignature,
   Numberish,
-  CurrentDebt,
-  TakeOfferInput,
-  Validation,
   SendStep,
-  SignStep,
   UserOp,
-  Payload,
-  ValidateTakeOfferInput,
-  RedemptionCharge,
-  ChargeWithSignature,
   MysteryBoxV1,
 } from "./types";
 
 import {
-  Criteria,
-  Side,
-  Kettle__factory,
   TestERC20__factory,
-  TestERC721__factory,
   StepAction,
   MysteryBoxV1__factory
 } from "./types";
 
 import {
-  randomSalt,
-  collateralApprovals,
   currencyAllowance,
-  equalAddresses
 } from "./utils";
-
-import {
-  verifyMessage
-} from "@ambire/signature-validator";
 
 export class MysteryBox {
 
