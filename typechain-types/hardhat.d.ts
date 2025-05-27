@@ -118,6 +118,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.SafeERC20__factory>;
     getContractFactory(
+      name: "ERC721",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC721__factory>;
+    getContractFactory(
       name: "IERC721Metadata",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC721Metadata__factory>;
@@ -146,6 +150,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Errors__factory>;
     getContractFactory(
+      name: "ERC165",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC165__factory>;
+    getContractFactory(
       name: "IERC165",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC165__factory>;
@@ -157,6 +165,18 @@ declare module "hardhat/types/runtime" {
       name: "Strings",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Strings__factory>;
+    getContractFactory(
+      name: "EntropyEvents",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.EntropyEvents__factory>;
+    getContractFactory(
+      name: "IEntropy",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IEntropy__factory>;
+    getContractFactory(
+      name: "IEntropyConsumer",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IEntropyConsumer__factory>;
     getContractFactory(
       name: "IKettleAssetFactory",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -182,9 +202,33 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Signatures__factory>;
     getContractFactory(
+      name: "IMysteryBoxRegistry",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IMysteryBoxRegistry__factory>;
+    getContractFactory(
+      name: "IKettleAssetFactory",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IKettleAssetFactory__factory>;
+    getContractFactory(
+      name: "IMysteryBoxV1",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IMysteryBoxV1__factory>;
+    getContractFactory(
+      name: "MysteryBoxRegistry",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.MysteryBoxRegistry__factory>;
+    getContractFactory(
+      name: "MysteryBoxV1",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.MysteryBoxV1__factory>;
+    getContractFactory(
       name: "KettleVolumeTracker",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.KettleVolumeTracker__factory>;
+    getContractFactory(
+      name: "MockEntropy",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.MockEntropy__factory>;
     getContractFactory(
       name: "TestERC20",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -337,6 +381,11 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.SafeERC20>;
     getContractAt(
+      name: "ERC721",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC721>;
+    getContractAt(
       name: "IERC721Metadata",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -372,6 +421,11 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.Errors>;
     getContractAt(
+      name: "ERC165",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC165>;
+    getContractAt(
       name: "IERC165",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -386,6 +440,21 @@ declare module "hardhat/types/runtime" {
       address: string | ethers.Addressable,
       signer?: ethers.Signer
     ): Promise<Contracts.Strings>;
+    getContractAt(
+      name: "EntropyEvents",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.EntropyEvents>;
+    getContractAt(
+      name: "IEntropy",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IEntropy>;
+    getContractAt(
+      name: "IEntropyConsumer",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IEntropyConsumer>;
     getContractAt(
       name: "IKettleAssetFactory",
       address: string | ethers.Addressable,
@@ -417,10 +486,40 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.Signatures>;
     getContractAt(
+      name: "IMysteryBoxRegistry",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IMysteryBoxRegistry>;
+    getContractAt(
+      name: "IKettleAssetFactory",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IKettleAssetFactory>;
+    getContractAt(
+      name: "IMysteryBoxV1",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IMysteryBoxV1>;
+    getContractAt(
+      name: "MysteryBoxRegistry",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.MysteryBoxRegistry>;
+    getContractAt(
+      name: "MysteryBoxV1",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.MysteryBoxV1>;
+    getContractAt(
       name: "KettleVolumeTracker",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
     ): Promise<Contracts.KettleVolumeTracker>;
+    getContractAt(
+      name: "MockEntropy",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.MockEntropy>;
     getContractAt(
       name: "TestERC20",
       address: string | ethers.Addressable,
@@ -552,6 +651,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.SafeERC20>;
     deployContract(
+      name: "ERC721",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ERC721>;
+    deployContract(
       name: "IERC721Metadata",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IERC721Metadata>;
@@ -580,6 +683,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Errors>;
     deployContract(
+      name: "ERC165",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ERC165>;
+    deployContract(
       name: "IERC165",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IERC165>;
@@ -591,6 +698,18 @@ declare module "hardhat/types/runtime" {
       name: "Strings",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Strings>;
+    deployContract(
+      name: "EntropyEvents",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.EntropyEvents>;
+    deployContract(
+      name: "IEntropy",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IEntropy>;
+    deployContract(
+      name: "IEntropyConsumer",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IEntropyConsumer>;
     deployContract(
       name: "IKettleAssetFactory",
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -616,9 +735,33 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Signatures>;
     deployContract(
+      name: "IMysteryBoxRegistry",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IMysteryBoxRegistry>;
+    deployContract(
+      name: "IKettleAssetFactory",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IKettleAssetFactory>;
+    deployContract(
+      name: "IMysteryBoxV1",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IMysteryBoxV1>;
+    deployContract(
+      name: "MysteryBoxRegistry",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.MysteryBoxRegistry>;
+    deployContract(
+      name: "MysteryBoxV1",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.MysteryBoxV1>;
+    deployContract(
       name: "KettleVolumeTracker",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.KettleVolumeTracker>;
+    deployContract(
+      name: "MockEntropy",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.MockEntropy>;
     deployContract(
       name: "TestERC20",
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -771,6 +914,11 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.SafeERC20>;
     deployContract(
+      name: "ERC721",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ERC721>;
+    deployContract(
       name: "IERC721Metadata",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -806,6 +954,11 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Errors>;
     deployContract(
+      name: "ERC165",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ERC165>;
+    deployContract(
       name: "IERC165",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -820,6 +973,21 @@ declare module "hardhat/types/runtime" {
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Strings>;
+    deployContract(
+      name: "EntropyEvents",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.EntropyEvents>;
+    deployContract(
+      name: "IEntropy",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IEntropy>;
+    deployContract(
+      name: "IEntropyConsumer",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IEntropyConsumer>;
     deployContract(
       name: "IKettleAssetFactory",
       args: any[],
@@ -851,10 +1019,40 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Signatures>;
     deployContract(
+      name: "IMysteryBoxRegistry",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IMysteryBoxRegistry>;
+    deployContract(
+      name: "IKettleAssetFactory",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IKettleAssetFactory>;
+    deployContract(
+      name: "IMysteryBoxV1",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IMysteryBoxV1>;
+    deployContract(
+      name: "MysteryBoxRegistry",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.MysteryBoxRegistry>;
+    deployContract(
+      name: "MysteryBoxV1",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.MysteryBoxV1>;
+    deployContract(
       name: "KettleVolumeTracker",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.KettleVolumeTracker>;
+    deployContract(
+      name: "MockEntropy",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.MockEntropy>;
     deployContract(
       name: "TestERC20",
       args: any[],

@@ -8,10 +8,12 @@ import {
   KettleAssetFactory,
   KettleAssetFactory__factory,
   KettleAsset__factory,
-  BeaconProxy__factory
+  BeaconProxy__factory,
+  MysteryBoxV1,
+  MysteryBoxV1__factory
 } from "../typechain-types";
 
-export type { KettleContract, KettleAssetFactory };
+export type { KettleContract, KettleAssetFactory, MysteryBoxV1 };
 
 export {
   KettleMarketplace__factory as Kettle__factory,
@@ -19,7 +21,8 @@ export {
   KettleAsset__factory,
   BeaconProxy__factory,
   TestERC20__factory,
-  TestERC721__factory
+  TestERC721__factory,
+  MysteryBoxV1__factory
 };
 
 export type Numberish = string | number | bigint;
@@ -140,7 +143,7 @@ export type GenericStep = {
 
 export type SendStep = GenericStep & {
   action: StepAction.SEND;
-  type: `approve-${string}` | `take-${string}` | `repay-${string}` | `escrow-${string}` | `claim-${string}` | `cancel-${string}` | `redeem${string}` | `${string}-escrow`;
+  type: `approve-${string}` | `take-${string}` | `repay-${string}` | `escrow-${string}` | `claim-${string}` | `cancel-${string}` | `redeem${string}` | `${string}-escrow` | `mint-${string}`;
   userOp: UserOp;
   send: (signer: Signer | JsonRpcSigner) => Promise<string>;
 }

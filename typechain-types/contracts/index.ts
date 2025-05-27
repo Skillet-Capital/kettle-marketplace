@@ -5,6 +5,8 @@ import type * as factory from "./factory";
 export type { factory };
 import type * as marketplace from "./marketplace";
 export type { marketplace };
+import type * as mysteryBoxes from "./mystery-boxes";
+export type { mysteryBoxes };
 import type * as rewards from "./rewards";
 export type { rewards };
 import type * as test from "./test";
