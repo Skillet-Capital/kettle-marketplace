@@ -73,7 +73,7 @@ contract MysteryBoxRegistry is IMysteryBoxRegistry, Ownable {
     }
 
     modifier onlyMysteryBox() {
-        require(isMysteryBox(msg.sender), "Mystery box not registered");
+        require(_isMysteryBox[msg.sender], "Mystery box not registered");
         _;
     }
 }

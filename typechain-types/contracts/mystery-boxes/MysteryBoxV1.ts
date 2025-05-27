@@ -718,7 +718,7 @@ export interface MysteryBoxV1 extends BaseContract {
 
   getApproved: TypedContractMethod<[tokenId: BigNumberish], [string], "view">;
 
-  getBoxResult: TypedContractMethod<[tokenId: BigNumberish], [bigint], "view">;
+  getBoxResult: TypedContractMethod<[boxId: BigNumberish], [bigint], "view">;
 
   getCurrentMintPhase: TypedContractMethod<[], [string], "view">;
 
@@ -902,7 +902,7 @@ export interface MysteryBoxV1 extends BaseContract {
   ): TypedContractMethod<[tokenId: BigNumberish], [string], "view">;
   getFunction(
     nameOrSignature: "getBoxResult"
-  ): TypedContractMethod<[tokenId: BigNumberish], [bigint], "view">;
+  ): TypedContractMethod<[boxId: BigNumberish], [bigint], "view">;
   getFunction(
     nameOrSignature: "getCurrentMintPhase"
   ): TypedContractMethod<[], [string], "view">;
