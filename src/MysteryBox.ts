@@ -65,6 +65,28 @@ export class MysteryBox {
     return new MysteryBox(_providerOrSigner, this.contractAddress);
   }
 
+  public async details(): Promise<{
+    name: string;
+    symbol: string;
+    totalSupply: number | bigint;
+    price: number | bigint;
+    currency: string;
+    phase: string;
+    privateMintOpenTime: number | bigint;
+    publicMintOpenTime: number | bigint;
+  }> {
+    return {
+      name: await this.contract.name(),
+      symbol: await this.contract.symbol(),
+      totalSupply: await this.contract.totalSupply(),
+      price: await this.contract.price(),
+      currency: await this.contract.currency(),
+      phase: await this.contract.getCurrentMintPhase(),
+      privateMintOpenTime: await this.contract.privateMintOpenTime(),
+      publicMintOpenTime: await this.contract.publicMintOpenTime(),
+    }
+  }
+
   public async whitelisted(minter: string | Addressable): Promise<boolean> {
     const _minter = await this._resolveAddress(minter);
     return await this.contract.whitelist(_minter);
