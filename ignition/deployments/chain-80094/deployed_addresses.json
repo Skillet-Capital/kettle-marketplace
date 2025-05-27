@@ -24,5 +24,7 @@
   "DEV_KettleVolumeTracker#tracker_implementation": "0x56FC1CD3E6CCe4125f6864c75355F016AB03a0C5",
   "DEV_KettleVolumeTracker#tracker_proxy": "0x62c4Ede34a74a869aDD69cFC32582d2E019bb17E",
   "DEV_KettleVolumeTracker#tracker_contract": "0x62c4Ede34a74a869aDD69cFC32582d2E019bb17E",
-  "DEV_KettleVolumeTracker#tracker_proxy_admin": "0x312Dc186d60d770C396DD582Be2fd4ca68c476F6"
+  "DEV_KettleVolumeTracker#tracker_proxy_admin": "0x312Dc186d60d770C396DD582Be2fd4ca68c476F6",
+  "DEV_MysteryBoxRegistry#registry": "0x929619Fca1c93ca0489bFfC1573E6C2636f939d8",
+  "DEV_MysteryBoxSeason1#mystery_box_season_1": "0x05c3a8E1856701fB8D1Fbb5184415EF64780F8a6"
 }
