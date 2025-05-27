@@ -3,5 +3,6 @@
 /* eslint-disable */
 export * as factory from "./factory";
 export * as marketplace from "./marketplace";
+export * as mysteryBoxes from "./mystery-boxes";
 export * as rewards from "./rewards";
 export * as test from "./test";
