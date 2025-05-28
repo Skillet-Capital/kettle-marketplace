@@ -555,6 +555,8 @@ export class Kettle {
         ]
       })
     });
+
+    console.log(await res.json())
   
     const { result } = await res.json();
 
