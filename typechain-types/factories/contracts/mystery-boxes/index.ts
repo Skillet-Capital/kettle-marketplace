@@ -5,3 +5,4 @@ export * as iMysteryBoxV1Sol from "./IMysteryBoxV1.sol";
 export { IMysteryBoxRegistry__factory } from "./IMysteryBoxRegistry__factory";
 export { MysteryBoxRegistry__factory } from "./MysteryBoxRegistry__factory";
 export { MysteryBoxV1__factory } from "./MysteryBoxV1__factory";
+export { MysteryBoxV2__factory } from "./MysteryBoxV2__factory";

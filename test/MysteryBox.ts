@@ -43,7 +43,7 @@ describe("Mystery Box", function () {
     registry = MysteryBoxRegistry__factory.connect(await _registry.getAddress(), owner);
     
     // Deploy Mystery Box
-    const _mysteryBox = await ethers.deployContract("MysteryBoxV1", [
+    const _mysteryBox = await ethers.deployContract("MysteryBoxV2", [
       await _registry.getAddress(),
       await factory.getAddress(),
       await mockEntropy.getAddress(),

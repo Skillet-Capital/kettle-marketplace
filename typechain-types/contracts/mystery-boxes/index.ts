@@ -6,3 +6,4 @@ export type { iMysteryBoxV1Sol };
 export type { IMysteryBoxRegistry } from "./IMysteryBoxRegistry";
 export type { MysteryBoxRegistry } from "./MysteryBoxRegistry";
 export type { MysteryBoxV1 } from "./MysteryBoxV1";
+export type { MysteryBoxV2 } from "./MysteryBoxV2";

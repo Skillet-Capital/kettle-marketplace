@@ -112,6 +112,8 @@ export type { MysteryBoxRegistry } from "./contracts/mystery-boxes/MysteryBoxReg
 export { MysteryBoxRegistry__factory } from "./factories/contracts/mystery-boxes/MysteryBoxRegistry__factory";
 export type { MysteryBoxV1 } from "./contracts/mystery-boxes/MysteryBoxV1";
 export { MysteryBoxV1__factory } from "./factories/contracts/mystery-boxes/MysteryBoxV1__factory";
+export type { MysteryBoxV2 } from "./contracts/mystery-boxes/MysteryBoxV2";
+export { MysteryBoxV2__factory } from "./factories/contracts/mystery-boxes/MysteryBoxV2__factory";
 export type { KettleVolumeTracker } from "./contracts/rewards/KettleVolumeTracker";
 export { KettleVolumeTracker__factory } from "./factories/contracts/rewards/KettleVolumeTracker__factory";
 export type { MockEntropy } from "./contracts/test/MockEntropy";
