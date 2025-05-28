@@ -48,7 +48,10 @@ import {
   randomSalt,
   collateralApprovals,
   currencyAllowance,
-  equalAddresses
+  equalAddresses,
+  offerExpired,
+  currencyBalance,
+  collateralBalance
 } from "./utils";
 
 import {
@@ -483,6 +486,174 @@ export class Kettle {
       charge
     );
   }
+
+  // ==============================================
+  //                 VALIDATIONS
+  // ==============================================
+
+  public async validateSignature(
+    offer: MarketOffer,
+    signature: string
+  ): Promise<void> {
+
+    const payload = await this._marketOfferPayload(offer);
+
+    delete payload['types']['EIP712Domain'];
+
+    const isValidSig = await verifyMessage({
+      signer: offer.maker,
+      typedData: payload,
+      signature,
+
+      // @ts-expect-error provider is not in the interface
+      provider: this.provider,
+    })
+
+    if (!isValidSig) {
+      throw new Error("Invalid signature");
+    }
+  }
+
+  public async validateOffer(
+    offer: MarketOffer,
+  ): Promise<void> {
+    const operator = this.contractAddress;
+
+    if (offerExpired(offer.expiration)) {
+      throw new Error("Offer expired");
+    }
+
+    // basic validations for cancelled or nonce
+    const validationPromises: Promise<Validation>[] = [
+      this.contract.cancelledOrFulfilled(offer.maker, offer.salt)
+        .then((cancelled: number | bigint) => ({
+          check: "cancelled",
+          valid: !cancelled
+        })),
+      this.contract.nonces(offer.maker)
+        .then((nonce: number | bigint) => ({
+          check: "nonce",
+          valid: BigInt(nonce) === BigInt(offer.nonce)
+        })),
+    ]
+
+    // BID SIDE VALIDATIONS
+    if (offer.side === Side.BID) {
+      validationPromises.push(...[
+        currencyBalance(offer.maker, offer.terms.currency, this.provider)
+          .then((balance) => ({
+            check: "balance",
+            valid: balance >= BigInt(offer.terms.amount),
+            reason: "Insufficient balance"
+          }) as Validation),
+        currencyAllowance(offer.maker, offer.terms.currency, operator, this.provider)
+          .then((allowance) => ({
+            check: "allowance",
+            valid: allowance >= BigInt(offer.terms.amount),
+            reason: "Insufficient allowance"
+          }) as Validation)
+      ])
+
+      // ASK SIDE VALIDATIONS
+    } else {
+      validationPromises.push(...[
+        collateralBalance(offer.maker, offer.collateral.collection, offer.collateral.identifier, this.provider)
+          .then((owns) => ({
+            check: "ownership",
+            valid: owns,
+            reason: "Maker does not own collateral"
+          }) as Validation),
+        collateralApprovals(offer.maker, offer.collateral.collection, operator, this.provider)
+          .then((approved) => ({
+            check: "approval",
+            valid: approved,
+            reason: "Maker has not approved collateral"
+          }) as Validation)
+      ]);
+    }
+
+    await this._executeValidations(validationPromises);
+  }
+
+  public async validateTakeOffer(
+    user: string,
+    input: ValidateTakeOfferInput
+  ): Promise<void> {
+
+    // validate offer maker params
+    await this.validateOffer(input.offer);
+
+    const validationPromises: Promise<Validation>[] = [];
+
+    if (input.offer.side === Side.BID) {
+      validationPromises.push(
+        TestERC721__factory.connect(input.offer.collateral.collection, this.provider)
+          .ownerOf(input.tokenId)
+          .then((owner) => ({
+            check: "ownership",
+            valid: equalAddresses(owner, user),
+            reason: "Taker not owner of token"
+          }))
+      );
+
+    } else {
+      validationPromises.push(
+        currencyBalance(user, input.offer.terms.currency, this.provider)
+          .then((balance) => ({
+            check: "balance",
+            valid: balance >= BigInt(input.offer.terms.amount),
+            reason: "Taker has insufficient balance"
+          }) as Validation)
+      );
+    }
+
+    await this._executeValidations(validationPromises);
+  }
+
+  public async validateCreateOffer(
+    user: string,
+    input: CreateMarketOfferInput
+  ): Promise<void> {
+
+    const validationPromises: Promise<Validation>[] = [];
+
+    if (input.side === Side.BID) {
+      validationPromises.push(
+        currencyBalance(user, await this._resolveAddress(input.currency), this.provider)
+          .then((balance) => ({
+            check: "balance",
+            valid: balance >= BigInt(input.amount),
+            reason: "Insufficient balance"
+          }) as Validation)
+      );
+    } else {
+      validationPromises.push(
+        collateralBalance(user, await this._resolveAddress(input.collection), input.identifier, this.provider)
+          .then((owns) => ({
+            check: "ownership",
+            valid: owns,
+            reason: "Maker does not own collateral"
+          }) as Validation)
+      );
+    }
+
+    await this._executeValidations(validationPromises);
+  }
+
+  private async _executeValidations(validations: Promise<Validation>[]): Promise<void> {
+    const results = await Promise.all(validations);
+
+    for (const result of results) {
+      console.log(result);
+      if (!result.valid) {
+        throw new Error(`[${result.check}]: ${result.reason ?? "Validation failed"}`);
+      }
+    }
+  }
+
+  // ==============================================
+  //                 UTILITIES
+  // ==============================================
 
   public mulFee(amount: bigint | string | number, rate: bigint | string | number) {
     return BigInt(amount) * BigInt(rate) / BASIS_POINTS_DIVISOR;
