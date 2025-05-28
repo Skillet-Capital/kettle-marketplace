@@ -14,7 +14,8 @@ import {
   JsonRpcSigner,
   TypedDataEncoder,
   Addressable,
-  MaxUint256
+  MaxUint256,
+  Interface
 } from "ethers";
 
 import type {
@@ -510,6 +511,56 @@ export class Kettle {
     })
 
     if (!isValidSig) {
+      throw new Error("Invalid signature");
+    }
+  }
+
+  public async validateSignaturePimlico(
+    offer: MarketOffer,
+    signature: string,
+    bundlerUrl: string,
+    entryPoint: string
+  ): Promise<void> {
+    const EIP_1271_MAGICVALUE = "0x1626ba7e";
+
+    const payload = await this._marketOfferPayload(offer);
+    delete payload.types.EIP712Domain;
+  
+    const messageHash = TypedDataEncoder.hash(
+      payload.domain,
+      payload.types,
+      payload.message
+    );
+  
+    const iface = new Interface([ 
+      "function isValidSignature(bytes32,bytes) view returns (bytes4)"
+    ]);
+  
+    const data = iface.encodeFunctionData("isValidSignature", [messageHash, signature]);
+  
+    const res = await fetch(bundlerUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        jsonrpc: "2.0",
+        id: 1,
+        method: "eth_call",
+        params: [
+          {
+            to: offer.maker,
+            from: entryPoint,
+            data
+          },
+          "latest"
+        ]
+      })
+    });
+  
+    const { result } = await res.json();
+
+    console.log(result);
+  
+    if (!result || result.toLowerCase() !== EIP_1271_MAGICVALUE) {
       throw new Error("Invalid signature");
     }
   }
