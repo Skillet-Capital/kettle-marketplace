@@ -29,6 +29,35 @@ type Transfer @entity {
 }
 
 # ====================================
+#           Mystery Box Events
+# ====================================
+
+type MysteryBox @entity {
+  id: Bytes!
+  name: String!
+  symbol: String!
+  totalSupply: BigInt!
+  price: BigInt!
+  currency: Bytes!
+  paymentRecipient: Bytes!
+  privateMintOpenTime: BigInt!
+  publicMintOpenTime: BigInt!
+  totalMinted: BigInt!
+}
+
+type MysteryBoxAccount @entity {
+  id: Bytes!
+  assets: [MysteryBoxAsset!]! @derivedFrom(field: "owner")
+}
+
+type MysteryBoxAsset @entity {
+  id: String!
+  collection: Bytes!
+  identifier: BigInt!
+  owner: MysteryBoxAccount!
+}
+
+# ====================================
 #           Token Events
 # ====================================
 
