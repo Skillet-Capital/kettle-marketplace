@@ -127,6 +127,24 @@ export class MysteryBox {
     return [...allowanceActions, mintAction];
   }
 
+  public reveal(tokenId: number | bigint): SendStep {
+    return {
+      action: StepAction.SEND,
+      type: "reveal-box",
+      userOp: {
+        to: this.contractAddress,
+        data: this.mysteryBoxInterface.encodeFunctionData(
+          this.mysteryBoxInterface.getFunction("reveal"),
+          [tokenId]
+        )
+      },
+      send: async (signer: Signer) => {
+        const txn = await this.contract.connect(signer).reveal(tokenId);
+        return this._confirmTransaction(txn.hash);
+      }
+    } as const;
+  }
+
   public encodeMint(minter: string) {
     return {
       to: this.contractAddress,

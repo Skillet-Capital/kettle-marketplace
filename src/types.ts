@@ -143,7 +143,7 @@ export type GenericStep = {
 
 export type SendStep = GenericStep & {
   action: StepAction.SEND;
-  type: `approve-${string}` | `take-${string}` | `repay-${string}` | `escrow-${string}` | `claim-${string}` | `cancel-${string}` | `redeem${string}` | `${string}-escrow` | `mint-${string}`;
+  type: `approve-${string}` | `take-${string}` | `repay-${string}` | `escrow-${string}` | `claim-${string}` | `cancel-${string}` | `redeem${string}` | `${string}-escrow` | `mint-${string}` | `reveal-${string}`;
   userOp: UserOp;
   send: (signer: Signer | JsonRpcSigner) => Promise<string>;
 }
