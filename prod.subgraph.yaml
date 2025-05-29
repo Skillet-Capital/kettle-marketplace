@@ -59,3 +59,31 @@ dataSources:
         - event: OfferManagerUpdated(indexed address)
           handler: handleOfferManagerUpdated
       file: ./handlers/activity.ts
+  - kind: ethereum
+    name: MysteryBoxRegistry
+    network: berachain-mainnet
+    source:
+      address: "0xC2e8919258eA76bf559b17f72026b0E01C17D005"
+      abi: MysteryBoxRegistry
+      startBlock: 5000000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Activity
+        - Redemption
+        - RedemptionSignerUpdate
+        - RedemptionWalletUpdate
+        - OfferManagerUpdate
+      abis:
+        - name: MysteryBoxRegistry
+          file: ./abis/MysteryBoxRegistry.json
+      eventHandlers:
+        - event: BoxInitialized(address,string,string,uint256,uint256,address,address,uint256,uint256)
+          handler: handleBoxInitialized
+        - event: BoxRevealed(address,uint256,address,address,uint256)
+          handler: handleBoxRevealed
+        - event: BoxTracked(address,uint256,address)
+          handler: handleBoxTracked
+      file: ./handlers/mystery-box.ts
