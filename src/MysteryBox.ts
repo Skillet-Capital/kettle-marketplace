@@ -23,6 +23,7 @@ import {
 import {
   currencyAllowance,
 } from "./utils";
+import { PrizeStruct } from "../typechain-types/contracts/mystery-boxes/MysteryBoxV1";
 
 export class MysteryBox {
 
@@ -97,6 +98,11 @@ export class MysteryBox {
   public async canMint(minter: string | Addressable): Promise<boolean> {
     const _minter = await this._resolveAddress(minter);
     return await this.contract.canMint(_minter);
+  }
+
+  public async getBoxResult(boxId: number | bigint): Promise<PrizeStruct> {
+    const prizeNumber = await this.contract.getBoxResult(boxId);
+    return await this.contract.prizes(prizeNumber);
   }
 
   public async mint(minter: string | Addressable): Promise<SendStep[]> {

@@ -31,5 +31,9 @@
   "DEV_MysteryBoxSeason1Test2#mystery_box_season_1": "0x813dB39F46ebfa5a5baCB5DB29F609210584BF8E",
   "PROD_MysteryBoxRegistry#registry": "0xC2e8919258eA76bf559b17f72026b0E01C17D005",
   "PROD_ProdMysteryBoxSeason1#mystery_box_season_1": "0x0ab4DE48fFb3D7DD1C8eD2e9D231bED3CB603F6C",
-  "PROD_ProdMysteryBoxSeason1Try2#mystery_box_season_1": "0x872ee8bADcA4a446A560D188AF859E837FE2efc0"
+  "PROD_ProdMysteryBoxSeason1Try2#mystery_box_season_1": "0x872ee8bADcA4a446A560D188AF859E837FE2efc0",
+  "DEV_ProdMysteryBoxSeason1Try2#mystery_box_season_1": "0xe3acaf6ad99EA65e8590A687AE3D23facBa41B98",
+  "DEV_MysteryBoxSeason1Test3#mystery_box_season_1": "0x22C8aF4EBE3B906c082669D1958301fa1fE380d5",
+  "DEV_MysteryBoxSeason1Test4#mystery_box_season_1": "0xb86165295be02Aa77C4f80C2b6eBD509F2F73A8a",
+  "DEV_MysteryBoxSeason1TestReveal#mystery_box_season_1": "0x8CaCDDed164Ee4883bD37b38E5Ae65c4a4b9aa8e"
 }

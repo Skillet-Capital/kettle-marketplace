@@ -10,7 +10,7 @@ const ENTROPY_ADDRESS = "0x36825bf3Fbdf5a29E2d5148bfe7Dcf7B5639e320";
 const PAYMENT_CURRENCY = "0xfcbd14dc51f0a4d49d5e53c2e0950e0bc26d0dce";
 const PAYMENT_RECIPIENT = "0xe3a7e4ad7bd8f34ae7e478814b51d0ba4a8cbc3c";
 
-const MysteryBoxSeason1Test3Module = buildModule(formatId("MysteryBoxSeason1Test3"), (m) => {
+const MysteryBoxSeason1Test4Module = buildModule(formatId("MysteryBoxSeason1Test4"), (m) => {
   const { registry } = m.useModule(MysteryBoxRegistryModule);
   const { factory } = m.useModule(KettleAssetFactoryModule);
 
@@ -30,13 +30,13 @@ const MysteryBoxSeason1Test3Module = buildModule(formatId("MysteryBoxSeason1Test
   return { mysteryBox };
 });
 
-const MysteryBoxSeason1Test3InitializeModule = buildModule(formatId("MysteryBoxSeason1Test3Initialize"), (m) => {
+const MysteryBoxSeason1Test4InitializeModule = buildModule(formatId("MysteryBoxSeason1Test4Initialize"), (m) => {
 
-  const { mysteryBox } = m.useModule(MysteryBoxSeason1Test3Module);
+  const { mysteryBox } = m.useModule(MysteryBoxSeason1Test4Module);
 
   m.call(mysteryBox, "initialize", [
     25,
-    parseUnits("5", 18),
+    parseUnits("10000", 18),
     PAYMENT_CURRENCY,
     PAYMENT_RECIPIENT,
     0,
@@ -157,4 +157,4 @@ const MysteryBoxSeason1Test3InitializeModule = buildModule(formatId("MysteryBoxS
   return { mysteryBox };
 });
 
-export default MysteryBoxSeason1Test3InitializeModule;
+export default MysteryBoxSeason1Test4InitializeModule;
