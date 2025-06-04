@@ -175,6 +175,10 @@ const ProdMysteryBoxSeason1Try2Initialize = buildModule(formatId("ProdMysteryBox
     tokenId: p.tokenId
   }))], { id: "set_prizes_mystery_box_season_1" });
 
+  m.call(mysteryBox, "entropyRequest", [keccak256(toUtf8Bytes("MYSTERY_BOX_SEASON_1_REVEAL_1748966400"))], { id: "entropy_request_mystery_box_season_1", value: parseUnits("0.1", 18) });
+
+  m.call(mysteryBox, "shuffleBoxes", [], { id: "shuffle_boxes_mystery_box_season_1" });
+
   return { mysteryBox };
 });
 
