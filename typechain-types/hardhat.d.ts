@@ -226,6 +226,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.MysteryBoxV2__factory>;
     getContractFactory(
+      name: "KettleStakingToken",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.KettleStakingToken__factory>;
+    getContractFactory(
       name: "KettleVolumeTracker",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.KettleVolumeTracker__factory>;
@@ -520,6 +524,11 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.MysteryBoxV2>;
     getContractAt(
+      name: "KettleStakingToken",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.KettleStakingToken>;
+    getContractAt(
       name: "KettleVolumeTracker",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -768,6 +777,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.MysteryBoxV2>;
     deployContract(
+      name: "KettleStakingToken",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.KettleStakingToken>;
+    deployContract(
       name: "KettleVolumeTracker",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.KettleVolumeTracker>;
@@ -1061,6 +1074,11 @@ declare module "hardhat/types/runtime" {
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.MysteryBoxV2>;
+    deployContract(
+      name: "KettleStakingToken",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.KettleStakingToken>;
     deployContract(
       name: "KettleVolumeTracker",
       args: any[],

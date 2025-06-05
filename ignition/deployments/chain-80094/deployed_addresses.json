@@ -35,5 +35,9 @@
   "DEV_ProdMysteryBoxSeason1Try2#mystery_box_season_1": "0xe3acaf6ad99EA65e8590A687AE3D23facBa41B98",
   "DEV_MysteryBoxSeason1Test3#mystery_box_season_1": "0x22C8aF4EBE3B906c082669D1958301fa1fE380d5",
   "DEV_MysteryBoxSeason1Test4#mystery_box_season_1": "0xb86165295be02Aa77C4f80C2b6eBD509F2F73A8a",
-  "DEV_MysteryBoxSeason1TestReveal#mystery_box_season_1": "0x8CaCDDed164Ee4883bD37b38E5Ae65c4a4b9aa8e"
+  "DEV_MysteryBoxSeason1TestReveal#mystery_box_season_1": "0x8CaCDDed164Ee4883bD37b38E5Ae65c4a4b9aa8e",
+  "PROD_KettleStakingToken#tracker_implementation": "0x3C78d7756031A145fa9b1B0C27dF8f9aF0480f30",
+  "PROD_KettleStakingToken#tracker_proxy": "0x44a1610C0e57dd49638CC57b2638e3F0C847bd6b",
+  "PROD_KettleStakingToken#staking_token_contract": "0x44a1610C0e57dd49638CC57b2638e3F0C847bd6b",
+  "PROD_KettleStakingToken#tracker_proxy_admin": "0x8FB3803007EC3061ABa7a25e52700e32f998c92e"
 }
